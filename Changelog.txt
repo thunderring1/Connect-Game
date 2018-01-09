@@ -1,4 +1,19 @@
 Ver 1.02:
 -Added a Perk Bonus pane to the Menu pane
--Buffed Lucky perk (from 5% to 20%). I think this perk is only good in the early game and is not as strong in the late game
+
+-Buffed Lucky perk. Its base bonus is now 20% (up from 5%). I think this perk is only good in the early game and is not as strong in the late game
+
 -Slowed down the game speed increase rate (from +0.1 target/15s to +0.1 target/20s)
+
+-Hourglass perk no longer slows down the target spawning speed
+
+Ver 1.03:
+-Buffed Full Clear perk. It now no longer uses up 15% of your current score.
+
+-Changed Score Up perk. Its base bonus is now 20% (up from 10%). Its bonus per stack is now 5% (down from 10%). This perk seems very strong through out testing. A good player can easily obtain up to 200% bonus. This outdoes its counterpart Double Score perk by a good margin. These changes will bring it closer to its counterpart and still be a rewarding perk.
+
+-Nerfed Slow Down perk. Its bonus per stack is now 4% (down from 5%). Similar to Score Up perk, a good player can easily obtain up to 100% bonus. This also outdoes its counterpart Hourglass by a good margin.
+
+-Nerfed Size Up perk. Its bonus per stack is now 4% (down from 5%).
+
+-Hourglass' effect now stacks.

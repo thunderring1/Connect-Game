@@ -156,11 +156,11 @@ public class Game extends Application {
     tooltipList[0] = new Tooltip("Hourglass (Active) - Targets are 50% slower for the next 6s");
     tooltipList[1] = new Tooltip("Extra life (Hybrid) - One extra life (start with 1 less life)");
     tooltipList[2] = new Tooltip("Double score (Active) - Double the score gained for the next 12 seconds");
-    tooltipList[3] = new Tooltip("Full clear (Active) - Use up 15% of your score and clear all targets on screen");
+    tooltipList[3] = new Tooltip("Full clear (Active) - Clear all targets on screen and gain score for each target");
     tooltipList[4] = new Tooltip("Fortune favors the brave (Active) - Randomly spawn one of the other active and hybrid items");
-    tooltipList[5] = new Tooltip("Score up (Passive) - Gain 10% more score for each stack - base 10%");
-    tooltipList[6] = new Tooltip("Slow down (Passive) - Targets last 5% longer for each stack - base 10%");
-    tooltipList[7] = new Tooltip("Size up (Passive) - Targets 5% bigger for each stack - base 10%");
+    tooltipList[5] = new Tooltip("Score up (Passive) - Gain 5% more score for each stack - base 20%");
+    tooltipList[6] = new Tooltip("Slow down (Passive) - Targets last 4% longer for each stack - base 10%");
+    tooltipList[7] = new Tooltip("Size up (Passive) - Targets 4% bigger for each stack - base 10%");
     tooltipList[8] = new Tooltip("Lucky (Passive) - 1% more chance for an item to appear - base 20%");
     tooltipList[9] = new Tooltip("Jesus takes the Wheel (Active) - Randomly spawn one of the other items");
 
@@ -466,7 +466,7 @@ public class Game extends Application {
     if (chosenPerks.contains(1))
       setLife();
     if (chosenPerks.contains(5))
-      baseScoreMultiplier = 1.10;
+      baseScoreMultiplier = 1.20;
     if (chosenPerks.contains(6))
       durationMultiplier = 1.1;
     if (chosenPerks.contains(7))
@@ -798,10 +798,10 @@ Perks
   private synchronized void perkHourGlass() {
     try {
       setAllPlayRate(0.5);
-      playRate = 0.5;
+      playRate = playRate/2;
       wait(6000);
       setAllPlayRate(2);
-      playRate = 1.0;
+      playRate = playRate * 2;
     } catch (InterruptedException ie) {}
   }
 
@@ -827,7 +827,7 @@ Perks
       Platform.runLater(() -> {
         int targets = nodeList.size();
         nodeList.clear();
-        currentScore = currentScore * 0.85;
+
         setScore(targets * baseScore * Math.pow(speedMultiplier, (gameSpeed-1)*2));
       });
     } catch (Exception e) {}
@@ -842,21 +842,21 @@ Perks
 
   private synchronized void perkScoreUp() {
     Platform.runLater( () -> {
-      baseScoreMultiplier += 0.1;
+      baseScoreMultiplier += 0.05;
       scoreupBonus.setText("Score up: " + ((int)((baseScoreMultiplier-1)*100)) + "%");
     });
   }
 
   private synchronized void perkSlowDown() {
     Platform.runLater(() -> {
-      durationMultiplier += 0.05;
+      durationMultiplier += 0.04;
       slowdownBonus.setText("Slow down: " + ((int)((durationMultiplier-1)*100)) + "%");
     });
   }
 
   private synchronized void perkSizeUp() {
     Platform.runLater(() -> {
-      targetSizeMultiplier += 0.05;
+      targetSizeMultiplier += 0.04;
       sizeupBonus.setText("Size up: " + ((int)((targetSizeMultiplier-1)*100)) + "%");
     });
   }
